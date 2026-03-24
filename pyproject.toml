@@ -37,7 +37,7 @@ docs = ["sphinx", "myst-parser", "myst-nb"]
 [tool.scikit-build]
 cmake.version = ">3.15"
 cmake.source-dir = "external/ecrad_source"
-wheel.packages = ["src/tcars"]
+#wheel.packages = ["src/tcars"]
 wheel.install-dir = "tcars/ecrad"
 
 [tool.scikit-build.wheel.packages]
