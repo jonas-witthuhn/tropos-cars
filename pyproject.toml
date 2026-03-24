@@ -43,11 +43,13 @@ sdist.include = ["src/tcars/_version.py"]
 #sdist.include = ["external/ecrad_source/VERSION"]
 wheel.license-files = ["external/ecrad_source/VERSION"]
 
-
 [tool.scikit-build.wheel.packages]
 "tcars/ecrad/data" = "external/ecrad_source/data"
 "tcars" = "src/tcars"
 
+[tool.scikit-build.build.hooks.custom]
+path = "generate_ecrad_version_hook.py"
+entry-point = "generate_ecrad_version_file"
 
 [tool.setuptools_scm]
 local_scheme = "dirty-tag"
