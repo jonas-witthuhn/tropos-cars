@@ -4,8 +4,7 @@ build-backend = "scikit_build_core.build"
 
 [project]
 name = "tcars"
-dynamic = ["version","classifiers"]
-description = "A Python framework to run ecRad and rrtmg simulations"
+dynamic = ["version","description"]
 authors = [
     {name = "Hartwig Deneke", email = "deneke@tropos.de"},
     {name = "Jonas Witthuhn", email = "witthuhn@tropos.de"}
@@ -47,11 +46,10 @@ wheel.license-files = ["external/ecrad_source/VERSION"]
 "tcars/ecrad/data" = "external/ecrad_source/data"
 "tcars" = "src/tcars"
 
-[tool.scikit-build.metadata.classifiers]
+[tool.scikit-build.metadata.description]
 provider = "scikit_build_core.metadata.regex"
 input = "external/ecrad_source/VERSION"
 regex = ".*?"
-result = ["{value}"]
 
 [[tool.scikit-build.generate]]
 path = "tcars/_ecrad_version.py"
