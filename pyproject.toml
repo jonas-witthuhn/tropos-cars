@@ -41,8 +41,15 @@ wheel.install-dir = "tcars/ecrad"
 
 [tool.scikit-build.wheel.packages]
 "tcars/ecrad/data" = "external/ecrad_source/data"
-"tcars" = "src/tcars"
+#"tcars" = "src/tcars"
 #sdist.include = ["external/ecrad_source/VERSION"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["tcars"]
+
+[tool.setuptools.package-data]
+tcars = ["share/*.json", "conf/*.json"]
 
 [tool.setuptools_scm]
 local_scheme = "dirty-tag"
