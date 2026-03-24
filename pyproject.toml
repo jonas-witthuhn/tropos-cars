@@ -4,7 +4,7 @@ build-backend = "scikit_build_core.build"
 
 [project]
 name = "tcars"
-dynamic = ["version"]
+dynamic = ["version","ecradversion"]
 description = "A Python framework to run ecRad and rrtmg simulations"
 authors = [
     {name = "Hartwig Deneke", email = "deneke@tropos.de"},
@@ -47,9 +47,20 @@ wheel.license-files = ["external/ecrad_source/VERSION"]
 "tcars/ecrad/data" = "external/ecrad_source/data"
 "tcars" = "src/tcars"
 
-[tool.scikit-build.build.hooks.custom]
-path = "generate_ecrad_version_hook.py"
-entry-point = "generate_ecrad_version_file"
+[tool.scikit-build.metadata.ecradversion]
+provider = "scikit_build_core.metadata.regex"
+input = "external/ecrad_source/VERSION"
+regex = ".*?"
+
+[[tool.scikit-build.generate]]
+path = "tcars/_ecrad_version.py"
+template = '''
+__version__ = "${ecradversion}"
+'''
+
+#[tool.scikit-build.build.hooks.custom]
+#path = "generate_ecrad_version_hook.py"
+#entry-point = "generate_ecrad_version_file"
 
 [tool.setuptools_scm]
 local_scheme = "dirty-tag"
