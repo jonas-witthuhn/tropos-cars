@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools_scm", "scikit-build-core", "hatchling"]
+build-backend = "scikit_build_core.build"
+
+[project]
+name = "tcars"
+dynamic = ["version"]
+description = "A Python framework to run ecRad and rrtmg simulations"
+authors = [
+    {name = "Hartwig Deneke", email = "deneke@tropos.de"},
+    {name = "Jonas Witthuhn", email = "witthuhn@tropos.de"}
+]
+license = {text = "GNU General Public License v3 (GPLv3)"}
+requires-python = ">=3.10"
+dependencies = [
+    "pip",
+    "numpy",
+    "pandas",
+    "xarray",
+    "cfgrib",
+    "cdsapi",
+    "scipy",
+    "matplotlib",
+    "bottleneck",
+    "netcdf4",
+    "jstyleson",
+    "toolz",
+    "addict",
+    "trosat-base @ git+https://github.com/hdeneke/trosat-base.git#egg=trosat-base",
+    "tqdm",
+]
+
+[project.optional-dependencies]
+jupyter = ["jupyter", "ipykernel"]
+docs = ["sphinx", "myst-parser", "myst-nb"]
+
+[project.entry-points.console_scripts]
+ecrad = "src/ecrad/bin/ecrad"
+
+[tool.scikit-build]
+cmake.version = ">3.15"
+cmake.source-dir = "external/ecrad_source"
+build-dir = "src/ecrad"
+
+[tool.scikit-build.wheel.packages]
+"src/ecrad/data" = "external/ecrad_source/data"
+"src/ecrad/VERSION" = "external/ecrad_source/VERSION"
+
+[tool.setuptools_scm]
+local_scheme = "dirty-tag"
+write_to = "src/tcars/_version.py" 
