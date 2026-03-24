@@ -38,18 +38,15 @@ docs = ["sphinx", "myst-parser", "myst-nb"]
 cmake.version = ">3.15"
 cmake.source-dir = "external/ecrad_source"
 wheel.install-dir = "tcars/ecrad"
+cmake.args = [
+    "-DPROJECT_VERSION=$(python -c 'import setuptools_scm; print(setuptools_scm.get_version())')"
+]
 
 [tool.scikit-build.wheel.packages]
 "tcars/ecrad/data" = "external/ecrad_source/data"
-#"tcars" = "src/tcars"
+"tcars" = "src/tcars"
 #sdist.include = ["external/ecrad_source/VERSION"]
 
-[tool.setuptools.packages.find]
-where = ["src"]
-include = ["tcars"]
-
-[tool.setuptools.package-data]
-tcars = ["share/*.json", "conf/*.json"]
 
 [tool.setuptools_scm]
 local_scheme = "dirty-tag"
