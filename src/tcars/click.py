@@ -12,6 +12,7 @@ import numpy as np
 import datetime as dt
 
 import tcars
+import tcars.ecrad
 
 logger = logging.getLogger(__name__)
 
@@ -27,7 +28,7 @@ def cli_tcars():
     pass
 
 
-@click.version_option(package_name="tcars.ecrad")
+@click.version_option(version=f"{tcars.__version__}, {tcars.ecrad.__version__}")
 @click.group("ecrad")
 def cli_ecrad():
     pass

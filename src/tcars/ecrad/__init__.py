@@ -1,10 +1,4 @@
-from importlib.metadata import version, PackageNotFoundError
-try:
-    __version__ = version("tcars.ecrad")
-except PackageNotFoundError:
-    # package is not installed
-    pass
-
+from tcars.ecrad import __version__
 
 import logging
 logging.getLogger(__name__).addHandler(logging.NullHandler())
