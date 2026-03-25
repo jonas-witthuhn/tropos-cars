@@ -58,7 +58,7 @@ regex = "(?P<value>\\d+\\.\\d+\\.\\d+)"
 [[tool.scikit-build.generate]]
 path = "tcars/_ecrad_version.py"
 template = '''
-__version__ = "${description}"
+__ecrad_version__ = "${description}"
 '''
 
 #[tool.scikit-build.build.hooks.custom]

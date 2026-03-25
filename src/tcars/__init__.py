@@ -8,9 +8,9 @@ except PackageNotFoundError:
     pass
 
 try:
-    from ._ecrad_version import __version__ as __ecrad_version__
+    from ._ecrad_version import __ecrad_version__
     __version__ += f", ecrad-{__ecrad_version__}"
-except PackageNotFoundError:
+except:
     # package is not installed
     pass
 
