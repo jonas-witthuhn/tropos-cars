@@ -141,7 +141,7 @@ def get_default_config():
         if key.startswith("file"):
             default_config.update({
                 key: os.path.join(
-                    importlib.resources.files("taro"),
+                    importlib.resources.files("tcars"),
                     default_config[key]
                 )
             })
@@ -149,7 +149,7 @@ def get_default_config():
 
 def merge_config(config):
     """
-    Merge config dictionary with taro default config
+    Merge config dictionary with tcars default config
     """
     default_config = get_default_config()
     if isinstance(config,str):
