@@ -1,13 +1,15 @@
 import os
+import importlib.resources
 import jstyleson as json
 import f90nml as fnl
 from tempfile import TemporaryDirectory
 import subprocess as sproc
+import numpy as np
 
-ecrad_bin = "/Users/deneke/src/ecrad/bin/ecrad"
-
-def get_version():
-    
+ecrad_bin = os.path.join(
+        importlib.resources.files("tcars"),
+        "ecrad/bin/ecrad"
+    )
 
 def ecrad_run(cfg, inp):
     with TemporaryDirectory() as tmpdir:

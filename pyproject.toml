@@ -35,7 +35,8 @@ jupyter = ["jupyter", "ipykernel"]
 docs = ["sphinx", "myst-parser", "myst-nb"]
 
 [project.scripts]
-tcars = "tcars.click:cli"
+tcars = "tcars.click:cli_tcars"
+ecrad = "tcars.click:cli_ecrad"
 
 [tool.scikit-build]
 cmake.version = ">3.15"
@@ -56,9 +57,9 @@ input = "external/ecrad_source/VERSION"
 regex = "(?P<value>\\d+\\.\\d+\\.\\d+)"
 
 [[tool.scikit-build.generate]]
-path = "tcars/_ecrad_version.py"
+path = "tcars/ecrad/_version.py"
 template = '''
-__ecrad_version__ = "${description}"
+__version__ = version = "${description}"
 '''
 
 #[tool.scikit-build.build.hooks.custom]

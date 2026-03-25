@@ -23,5 +23,11 @@ DEFAULT_CONFIG = fn_config = os.path.join(
 # initialize commandline interface
 @click.version_option()
 @click.group("tcars")
-def cli():
+def cli_tcars():
+    pass
+
+
+@click.version_option(package_name="tcars.ecrad")
+@click.group("ecrad")
+def cli_ecrad():
     pass
