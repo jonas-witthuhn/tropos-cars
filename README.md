@@ -21,7 +21,7 @@ mamba activate tcars
 
 Then tcars + ecrad can be installed via:
 ```bash
-python -m pip install git+https://github.com/jonas-witthuhn/tropos-cars
+python -m pip install git+https://github.com/tropos-car/tropos-cars
 ```
 
 ### Developement install
@@ -37,10 +37,10 @@ mamba activate tcars
 ```
 Clone the repository:
 ```bash
-git clone https://github.com/jonas-witthuhn/tropos-cars
+git clone https://github.com/tropos-car/tropos-cars
 ```
 
-Clone the repository:
+Change directory:
 ```bash
 cd tropos-cars/
 ```
@@ -50,3 +50,29 @@ Then install in editable mode:
 python -m pip install -e .
 ```
 
+## Usage
+### ecrad classic interface
+
+Print version:
+```bash
+$ ecrad --version
+tcars: <version>, ecrad: <version>
+```
+
+Print help:
+```bash
+$ ecrad --help
+```
+
+Run ecrad from command line from any directory:
+```bash
+$ ecrad namfile infile outfile
+```
+> The ecrad outfile is modified, adding the "ECRAD" variable with stdout, version and configuration information.
+
+### tcars cli
+Print version:
+```bash
+$ tcars --version
+tcars: <version>
+```
