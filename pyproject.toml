@@ -34,7 +34,7 @@ dependencies = [
 jupyter = ["jupyter", "ipykernel"]
 docs = ["sphinx", "myst-parser", "myst-nb"]
 
-[project.entry-points.console_scripts]
+[project.scripts]
 tcars = "tcars.click:cli"
 
 [tool.scikit-build]
