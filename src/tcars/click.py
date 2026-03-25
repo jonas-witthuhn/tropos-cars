@@ -61,11 +61,14 @@ def cli_ecrad(namfile,infile,outfile,config=None):
             capture_output=True,
             text=True,
         )
+
     stdout = pstat.stdout.splitlines()
-    for i,line in enumerate(stdout[::-1]):
+    stderr = pstat.stderr.splitlines()
+    for i,line in enumerate(stderr[::-1]):
         if "ERROR STOP" in line:
-            print(stdout[::-1][:i])
-            raise ValueError(line)
+            for l in stderr:
+                print(l)
+            raise ValueError(stderr[0])
         if i>=50:
             break
         
@@ -74,7 +77,7 @@ def cli_ecrad(namfile,infile,outfile,config=None):
     flx["ECRAD"].attrs = {
         "version": tcars.ecrad.__version__,
         "config": json.dumps(namfile_dict),
-        "stdout": pstat.stdout.splitlines(),
+        "stdout": stdout,
     }
 
     flx.to_netcdf(outfile)
